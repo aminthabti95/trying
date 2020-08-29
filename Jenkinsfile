@@ -18,6 +18,23 @@ git 'https://github.com/aminthabti95/trying.git'
    
  }
  
+ 
+  stage('Build'){
+  
+steps{
+  
+ echo 'excecuting gradle'
+   withGradle(){
+
+   sh'./gradlew -v'
+  
+ }
+  }
+ 
+ }
+  
+
+ 
   
  }
  }
