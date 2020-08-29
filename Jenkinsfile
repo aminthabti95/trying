@@ -41,7 +41,7 @@ stage('SonarQube analysis') {
  { // Will pick the global server connection you have configured
     
 
-sh 'gradle clean'
+sh'./gradlew -v'
    
  }
    }
