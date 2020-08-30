@@ -43,7 +43,7 @@ stage('SonarQube analysis') {
     withSonarQubeEnv('sonar-6')
  { // Will pick the global server connection you have configured
     
-  sh "${scannerHome}/bin/sonar-scanner"
+  sh '${scannerHome}/bin/sonar-scanner'
 
   
 
