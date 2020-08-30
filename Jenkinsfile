@@ -26,8 +26,8 @@ steps{
  echo 'excecuting gradle'
    withGradle(){
 
-  sh './gradlew clean '
-sh './gradlew assemble'
+  sh './gradlew build '
+
   
    
   
@@ -56,7 +56,7 @@ stage('SonarQube analysis') {
  {
    steps{
 
-deploy adapters: [tomcat9(credentialsId: 'alora', path: 'http://localhost:5050/manager/text', url: 'http://localhost:5050/')], contextPath: 'mydevapp', war: '**/*.war'   }
+deploy adapters: [tomcat9(credentialsId: 'alora', path: '/opt/', url: 'http://localhost:5050/')], contextPath: 'mydevapp', war: '**/*.war'   }
    
    }
   
