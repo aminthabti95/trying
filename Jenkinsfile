@@ -52,7 +52,21 @@ stage('SonarQube analysis') {
    }
   }
   
- 
+ stage('Tomcat-Server')
+ {
+   steps{
+
+ deploy adapters :[tomcat9(credentialsId: '9dea2a9b-7e7c-4651-a1f2-483949c37b5b', path: '', url: 'http://localhost:5050')], contextPath: 'rps', war: '**/*.war'
+   }
+   
+   }
+  
+  
+  
+ }
+}
+
+
   
  }
  }
