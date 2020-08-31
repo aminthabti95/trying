@@ -54,7 +54,7 @@ stage('SonarQube analysis') {
  {
    steps{
 
-deploy adapters: [tomcat9(credentialsId: 'alora', path: '', url: 'http://localhost:5050/')], contextPath: 'spank', war: '/var/lib/jenkins/workspace/dev-pipe/build/libs/try.war'   }
+deploy adapters: [tomcat9(credentialsId: 'alora', path: 'http://localhost:5050/', url: 'http://localhost:5050/manager/html')], contextPath: 'spank', war: '**/*.war'   }
    
    }
   
