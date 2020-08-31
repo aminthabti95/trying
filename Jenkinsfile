@@ -26,11 +26,7 @@ steps{
  echo 'excecuting gradle'
    withGradle(){
 
-  sh './gradlew build '
-      sh './gradlew clean '
-
-sh './gradlew assemble'
-  
+  sh './gradlew build '  
    
   
  }
