@@ -1,2 +1,3 @@
 FROM tomcat:9
-COPY  COPY /webapp/target/*.war /opt/tomcat/latest/webapps
+COPY /webapp/target/*.war /usr/local/tomcat/webapps/
+
