@@ -69,6 +69,26 @@ deploy adapters: [tomcat9(credentialsId: 'alora', path: '', url: 'http://localho
   }
  }
  
+
+ stage('Push Docker Image'){
+  steps{
+ withCredentials([string(credentialsId: 'docker-pwd', variable: 'DockerHubPwd')]) {
+  sh 'docker login -u amindevops -p ${DockerHubPwd}'
+ 
+ }
+  
+  sh 'docker push amindevops/devops-pipeline:1.0.0'
+ }
+ }
+ stage('Run Container '){
+  steps{
+ 
+  sh 'docker run -p 8080:8080 -d  -name devops-pipeline amindevops/devops-pipeline:1.0.0 '
+ }
+ }
+
+
+
  
   
  }
