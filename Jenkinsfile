@@ -66,8 +66,9 @@ deploy adapters: [tomcat9(credentialsId: 'alora', path: '', url: 'http://localho
   steps{
    
    
- sh 'docker build -t amindevops/devops-pipeline:1.0.0 . FROM tomcat:8
-COPY /webapp/target/*.war /usr/local/tomcat/webapps/' 
+ sh 'docker build -t amindevops/devops-pipeline:1.0.0 .   
+FROM tomcat:9
+COPY  /var/lib/jenkins/workspace/dev-pipe/build/libs/try.war /opt/tomcat/latest/webapps/' 
    
   }
  }
