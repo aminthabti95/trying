@@ -1,3 +1,3 @@
 FROM tomcat:9
-COPY /webapp/target/*.war /usr/local/tomcat/webapps/
+COPY /opt/tomcat/latest/webapps/spank /opt/tomcat/latest/webapps/spank
 
