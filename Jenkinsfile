@@ -64,7 +64,7 @@ deploy adapters: [tomcat9(credentialsId: 'alora', path: '', url: 'http://localho
   steps{
    
    
- sh 'docker build -t amindevops/devops-pipeline:1.0.0.'
+ sh 'docker build -t amindevops/devops-pipeline:1.0.0 .'
    
   }
  }
