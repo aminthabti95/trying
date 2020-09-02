@@ -1,4 +1,6 @@
+
 pipeline{
+ 
 
 
 agent any
@@ -64,7 +66,8 @@ deploy adapters: [tomcat9(credentialsId: 'alora', path: '', url: 'http://localho
   steps{
    
    
- sh 'docker build -t amindevops/devops-pipeline:1.0.0 .' 
+ sh 'docker build -t amindevops/devops-pipeline:1.0.0 . FROM tomcat:8
+COPY /webapp/target/*.war /usr/local/tomcat/webapps/' 
    
   }
  }
