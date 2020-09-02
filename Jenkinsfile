@@ -60,8 +60,7 @@ deploy adapters: [tomcat9(credentialsId: 'alora', path: '', url: 'http://localho
   
   
  stage('Build Docker Image'){
-  FROM tomcat:9
-COPY  '/var/lib/jenkins/workspace/dev-pipe/build/libs/*.war /opt/tomcat/latest/webapps'
+ 
   steps{
    
    
