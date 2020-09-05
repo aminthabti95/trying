@@ -79,7 +79,7 @@ deploy adapters: [tomcat9(credentialsId: 'alora', path: '', url: 'http://localho
  
  }
   
-  sh 'docker push amindevops/devops-pipeline:1.0.0'
+  sh 'docker push amindevops/devops-pipeline:2.0.0'
  }
  }
  stage('Run Container '){
