@@ -94,7 +94,7 @@ deploy adapters: [tomcat9(credentialsId: 'alora', path: '', url: 'http://localho
  stage('Run Container '){
   steps{
  
-  sh 'docker run -p 8080:8080 -d --name devops-pipelines  amindevops/devops-pipeline:1.0.0 '
+  sh 'docker run -p 8080:8080 -d --name devopspipeline  amindevops/devops-pipeline:1.0.0 '
  }
  }
 
