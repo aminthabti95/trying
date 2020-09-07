@@ -1,64 +1,50 @@
 
 pipeline{
  
-
-
 agent any
  
-stages{
-  
-  
+stages{ 
  
 stage('SCM-Checkout'){
  
  steps{
       
-
 git 'https://github.com/aminthabti95/trying.git'
 
-  }
-   
- }
- 
- 
+   }
+}
+  
   stage('Build'){
   
 steps{
   
  echo 'excecuting gradle'
+ 
    withGradle(){
 
-  sh './gradlew build '  
-   
+     sh './gradlew build '  
   
- }
+        }
+     }
   }
- 
- }
  
  stage('Selenium Test'){
  
   steps{  
   
-sh'./gradlew clean test'
+sh './gradlew clean test'
  
- }
+    }
  }
   
 stage('SonarQube analysis') {
  
   steps{ 
    
-    withSonarQubeEnv('sonar-6')
- { // Will pick the global server connection you have configured
-    
- sh './gradlew build '
-
-  
-
-   
- }
-   }
+    withSonarQubeEnv('sonar-6'){     
+           sh './gradlew build '
+       }
+     }
   }
   
  stage('Tomcat-Server')
@@ -71,37 +57,29 @@ deploy adapters: [tomcat9(credentialsId: 'alora', path: '', url: 'http://localho
   
   stage('Build Docker Image'){
  
-  steps{
+    steps{
    
-   
- sh 'docker build -t amindevops/devops-pipeline:1.0.0 .   '
-   
-  }
- }
+       sh 'docker build -t amindevops/devops-pipeline:1.0.0 .   '
+          }
+     }
  
- 
-
  stage('Push Docker Image'){
-  steps{
- withCredentials([string(credentialsId: 'docker-pwd', variable: 'DockerHubPwd')]) {
-  sh 'docker login -u amindevops -p ${DockerHubPwd}'
- 
- }
-  
-  sh 'docker push amindevops/devops-pipeline:1.0.0'
- }
- }
+     steps{
+       withCredentials([string(credentialsId: 'docker-pwd', variable: 'DockerHubPwd')]) {
+            sh 'docker login -u amindevops -p ${DockerHubPwd}'
+           }
+          sh 'docker push amindevops/devops-pipeline:1.0.0'
+         }
+      }
  stage('Run Container '){
-  steps{
+     steps{
+       sh 'docker run -p 8080:8080 -d --name devopspipeline  amindevops/devops-pipeline:1.0.0 '
+      }
+    }
  
-  sh 'docker run -p 8080:8080 -d --name devopspipeline  amindevops/devops-pipeline:1.0.0 '
- }
- }
-
-
-
  
-  
+ 
+ 
  }
 }
 
