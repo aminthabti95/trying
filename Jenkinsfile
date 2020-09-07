@@ -65,7 +65,7 @@ deploy adapters: [tomcat9(credentialsId: 'alora', path: '', url: 'http://localho
   steps{
    
    
- sh 'docker build -t amindevops/devops-pipeline:2.0.0 .   '
+ sh 'docker build -t amindevops/devops-pipeline:1.0.0 .   '
    
   }
  }
@@ -79,13 +79,13 @@ deploy adapters: [tomcat9(credentialsId: 'alora', path: '', url: 'http://localho
  
  }
   
-  sh 'docker push amindevops/devops-pipeline:2.0.0'
+  sh 'docker push amindevops/devops-pipeline:1.0.0'
  }
  }
  stage('Run Container '){
   steps{
  
-  sh 'docker run -p 8080:8080 -d  --name devops-pipeline amindevops/devops-pipeline:2.0.0 '
+  sh 'docker run -p 8080:8080 -d  --name devops-pipeline amindevops/devops-pipeline:1.0.0 '
  }
  }
 
