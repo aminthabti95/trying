@@ -23,7 +23,12 @@ dependencies {
     compile group : 'org.seleniumhq.selenium', name: 'selenium-java', version : '2.41.0'
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:26.0-jre'
+<<<<<<< HEAD
     testCompile 'org.testng:testng:6.10'
+=======
+    testImplementation 'org.codehaus.groovy:groovy-all:2.4.15'
+    
+>>>>>>> 46775f2b73453cb8f64ce6e368dc9f793ece29b4
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
