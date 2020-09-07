@@ -35,6 +35,12 @@ steps{
   }
  
  }
+ 
+ stage('Selenium Test'){
+ sh'./gradlew clean test'
+ 
+ }
+ 
   
 stage('SonarQube analysis') {
  
