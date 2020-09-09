@@ -39,7 +39,7 @@ sh './gradlew clean test'
   
 stage('Sonarqube') {
     environment {
-        scannerHome = tool 'sonarScanner'
+        tool name: 'sonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
     }
     steps {
         withSonarQubeEnv('sonar-6') {
