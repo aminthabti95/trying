@@ -61,7 +61,7 @@ stage('Sonarqube') {
  
     steps{
    
-       sh 'docker build -t amindevops/devops-pipeline:1.0.0 .   '
+       sh 'docker build -t amindevops/devopspipeline:1.0.0 .   '
           }
      }
  
@@ -70,12 +70,12 @@ stage('Sonarqube') {
        withCredentials([string(credentialsId: 'docker-pwd', variable: 'DockerHubPwd')]) {
             sh 'docker login -u amindevops -p ${DockerHubPwd}'
            }
-          sh 'docker push amindevops/devops-pipeline:1.0.0'
+          sh 'docker push amindevops/devopspipeline:1.0.0'
          }
       }
  stage('Run Container '){
      steps{
-       sh 'docker run -p 8080:8080 -d --name devops-pipelines  amindevops/devops-pipeline:1.0.0 '
+       sh 'docker run -p 8080:8080 -d --name devops-pipelines  amindevops/devopspipeline:1.0.0 '
       }
     }
  
