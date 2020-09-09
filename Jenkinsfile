@@ -36,7 +36,17 @@ sh './gradlew clean test'
  
     }
  }
+
   
+ stage('Tomcat-Server')
+ {
+   steps{
+
+deploy adapters: [tomcat9(credentialsId: 'alora', path: '', url: 'http://localhost:5050')], contextPath: 'timess', war: '**/*.war'   }
+   
+   }
+ 
+   
 stage('Sonarqube') {
     environment {
      scannerHome = tool name: 'sonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
@@ -48,14 +58,6 @@ stage('Sonarqube') {
      
     }
 }
-  
- stage('Tomcat-Server')
- {
-   steps{
-
-deploy adapters: [tomcat9(credentialsId: 'alora', path: '', url: 'http://localhost:5050')], contextPath: 'timess', war: '**/*.war'   }
-   
-   }
   
   stage('Build Docker Image'){
  
