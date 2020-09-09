@@ -37,15 +37,19 @@ sh './gradlew clean test'
     }
  }
   
-stage('SonarQube analysis') {
- 
-  steps{ 
-   
-    withSonarQubeEnv('sonar-6'){     
-           sh './gradlew build '
-       }
-     }
-  }
+stage('Sonarqube') {
+    environment {
+        scannerHome = tool 'sonarScanner'
+    }
+    steps {
+        withSonarQubeEnv('sonar-6') {
+            sh "${scannerHome}/bin/sonar-scanner"
+        }
+        timeout(time: 10, unit: 'MINUTES') {
+            waitForQualityGate abortPipeline: true
+        }
+    }
+}
   
  stage('Tomcat-Server')
  {
