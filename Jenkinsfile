@@ -53,7 +53,7 @@ stage('Sonarqube') {
  {
    steps{
 
-deploy adapters: [tomcat9(credentialsId: 'alora', path: '', url: 'http://localhost:5050')], contextPath: 'spank', war: '**/*.war'   }
+deploy adapters: [tomcat9(credentialsId: 'alora', path: '', url: 'http://localhost:5050')], contextPath: 'timess', war: '**/*.war'   }
    
    }
   
