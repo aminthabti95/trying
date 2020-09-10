@@ -75,7 +75,7 @@ stage('Sonarqube') {
       }
  stage('Run Container '){
      steps{
-       sh 'docker run -p 8080:8080 -d --name devops-pipeliness  amindevops/devops-pipeline:1.0.0 '
+       sh 'docker run -p 8080:8080 -d --name devops-pipelineo  amindevops/devops-pipeline:1.0.0 '
       }
     }
  
